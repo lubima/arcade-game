@@ -1,7 +1,10 @@
 // Enemies our player must avoid
-var Enemy = function() {
+let Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
+
+    // x position
+    // y position
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -14,16 +17,46 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+
+    // If Enemy is not passed boundary
+        // Move forward
+        // Increment x by speed * dt
+    // else
+        // Reset position to start
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+// ***** pseudo code *****
+// Player class
+//     Constructor
+//         Properties
+//             x position
+//             y position
+//             Sprite Image    
+//         Methods
+                // Update position
+                    // Check collision here
+                        //Did player x and y collide with enemy?
+                    // Check win here?
+                        // Did player x and y reach final tile?
+                // Render
+                    // Draw player sprite on current x and y coord position
+                // Handle keyboard input
+                    // Update player's x and y property according to input
+                // Reset Player
+                    // Set x and y to starting x and y 
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
+
+// New Player object
+let allEnemies = [];
+// Init allEnemies array
+// For wach enemy create and push new Enemy object into above array
 
 
 // Now instantiate your objects.
@@ -35,7 +68,7 @@ Enemy.prototype.render = function() {
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
+    const allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
