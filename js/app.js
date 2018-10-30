@@ -1,19 +1,20 @@
 // Enemies our player must avoid
-let Enemy = function() {
+class Enemy {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-
+    constructor(){
+        this.sprite = 'images/enemy-bug.png';
+    }
     // x position
     // y position
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
-};
+    
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
+    update(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -23,19 +24,30 @@ Enemy.prototype.update = function(dt) {
         // Increment x by speed * dt
     // else
         // Reset position to start
-};
+    }
 
 // Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-// ***** pseudo code *****
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+}
 // Player class
 //     Constructor
 //         Properties
 //             x position
 //             y position
 //             Sprite Image    
+class Player {
+    constructor(){
+        this.x = 0;
+        this.y = 0;
+        this.sprite = 'images/char-horn-girl.png';
+    }
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+}
+
 //         Methods
                 // Update position
                     // Check collision here
@@ -44,6 +56,7 @@ Enemy.prototype.render = function() {
                         // Did player x and y reach final tile?
                 // Render
                     // Draw player sprite on current x and y coord position
+                    
                 // Handle keyboard input
                     // Update player's x and y property according to input
                 // Reset Player
@@ -54,8 +67,9 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 
 // New Player object
-let allEnemies = [];
+const player = new Player();
 // Init allEnemies array
+// let allEnemies = [];
 // For wach enemy create and push new Enemy object into above array
 
 
