@@ -1,8 +1,9 @@
 // Enemies our player must avoid
 class Enemy {
-    constructor(){
-        this.x = 0;
-        this.y =55;
+    constructor(x,y,speed){
+        this.x = x;
+        this.y = y + 55;
+        this.speed = speed;
         this.sprite = 'images/enemy-bug.png';
         this.step = 101;
         this.boundary = this.step * 5;
@@ -23,7 +24,7 @@ class Enemy {
         if(this.x < this.boundary){
             // Move forward
             // Increment x by speed * dt
-            this.x += 200 * dt;
+            this.x += this.speed * dt;
         }
         else
             // Reset position to start
@@ -99,11 +100,13 @@ class Player {
 
 // New Player object
 const player = new Player();
-const bug1 = new Enemy();
+const bug1 = new Enemy(-101,0,200);
+const bug2 = new Enemy(-101,83,300);
+const bug3 = new Enemy((-101*2.5),83,300);
 // Init allEnemies array
 // For wach enemy create and push new Enemy object into above array
 const allEnemies = [];
-allEnemies.push(bug1);
+allEnemies.push(bug1,bug2,bug3);
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
