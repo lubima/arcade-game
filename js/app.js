@@ -36,26 +36,36 @@ class Enemy {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 }
+// Now write your own player class
+// This class requires an update(), render() and
+// a handleInput() method.
+
 // Player class
-//     Constructor
-//         Properties
-//             x position
-//             y position
-//             Sprite Image    
 class Player {
+    //     Constructor
+            // Properties
+                // x position
+                // y position
+                // Sprite Image    
     constructor(){
         this.sprite = 'images/char-horn-girl.png';
         this.step = 101;
         this.jump = 83;
         this.startX = this.step * 2;
-        this.startY = (this.jump * 5) - 20;
+        this.startY = (this.jump * 4) + 55;
         this.x = this.startX;
         this.y = this.startY;
+        this.victory = false;
         }
+    // Methods
+    // Render
     render() {
+        // Draw player sprite on current x and y coord position
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
+    // Handle keyboard input
     handleInput(input) {
+        // Update player's x and y property according to input
         switch(input){
             case 'left':
                 if(this.x > 0){
@@ -79,43 +89,45 @@ class Player {
                 break;
         }
     }
-}
-
-//Methods
     // Update position
+    update() {
         // Check collision here
+        for(let enemy of allEnemies) {
             //Did player x and y collide with enemy?
+            if(this.y === enemy.y && (enemy.x + enemy.step/2 > this.x && enemy.x < this.x + this.step/2)) {
+                this.reset();
+            }
+        }
         // Check win here?
             // Did player x and y reach final tile?
-    // Render
-        // Draw player sprite on current x and y coord position
-    // Handle keyboard input
-        // Update player's x and y property according to input
+            if(this.y === 55) {
+               this.victory = true; 
+            }
+        }
     // Reset Player
+    reset() {
         // Set x and y to starting x and y 
-
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+        this.y = this.startY;
+        this.x = this.startX;
+    }
+}
 
 // New Player object
+// Place the player object in a variable called player
+// Now instantiate your objects.
 const player = new Player();
 const bug1 = new Enemy(-101,0,200);
 const bug2 = new Enemy(-101,83,300);
 const bug3 = new Enemy((-101*2.5),83,300);
 // Init allEnemies array
-// For wach enemy create and push new Enemy object into above array
+// For each enemy create and push new Enemy object into above array
 const allEnemies = [];
-allEnemies.push(bug1,bug2,bug3);
-
-// Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-
+allEnemies.push(bug1,bug2,bug3);
 
 
 // This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+// --Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
     const allowedKeys = {
         37: 'left',
