@@ -4,15 +4,14 @@ class Enemy {
         this.x = x;
         this.y = y + 55;
         this.speed = speed;
+        // The image/sprite for our enemies, this uses
+        // a helper we've provided to easily load images
         this.sprite = 'images/enemy-bug.png';
         this.step = 101;
         this.boundary = this.step * 5;
         this.resetPos = -this.step;
     }
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
     
-
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
     update(dt) {
@@ -127,7 +126,7 @@ allEnemies.push(bug1,bug2,bug3);
 
 
 // This listens for key presses and sends the keys to your
-// --Player.handleInput() method. You don't need to modify this.
+// -- Player.handleInput() method. You don't need to modify this.--
 document.addEventListener('keyup', function(e) {
     const allowedKeys = {
         37: 'left',
