@@ -8,7 +8,7 @@ In this game you have a Player and Enemies (bugs). The goal of the player is to 
 
 ## Instructions
 
-To get started, open the `Arcade Game` folder which contains all the files.
+Once you have downloaded the files in `Arcade Game` folder, you will have to open `index.html` which should load the game.
 
 ## Contributing
 
